@@ -74,10 +74,10 @@ function formatMonthYear(date: Date) {
 function getDayLabel(dateStr: string) {
   const d = new Date(dateStr + 'T00:00:00'); // enforce local interpretation
   const today = new Date();
-  const todayStr = today.toISOString().split('T')[0];
+  const todayStr = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
   const yesterday = new Date();
   yesterday.setDate(yesterday.getDate() - 1);
-  const yesterdayStr = yesterday.toISOString().split('T')[0];
+  const yesterdayStr = `${yesterday.getFullYear()}-${String(yesterday.getMonth() + 1).padStart(2, '0')}-${String(yesterday.getDate()).padStart(2, '0')}`;
 
   const weekday = d.toLocaleDateString('es-CO', { weekday: 'long' });
   const day = d.getDate();
@@ -108,7 +108,10 @@ export function QuickAddModal({
   const [amount, setAmount]     = useState('');
   const [type, setType]         = useState<string>(defaultType);
   const [category, setCategory] = useState('');
-  const [date, setDate]         = useState(new Date().toISOString().split('T')[0]);
+  const [date, setDate]         = useState(() => {
+    const today = new Date();
+    return `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, '0')}-${String(today.getDate()).padStart(2, '0')}`;
+  });
   const [saving, setSaving]     = useState(false);
   const [error, setError]       = useState('');
 
