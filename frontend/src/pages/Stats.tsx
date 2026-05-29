@@ -1,5 +1,5 @@
 // frontend/src/pages/Stats.tsx
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import {
   AreaChart, Area, BarChart, Bar, PieChart, Pie, Cell,
   XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,

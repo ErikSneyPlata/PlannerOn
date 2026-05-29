@@ -1,12 +1,12 @@
 // frontend/src/pages/Projects.tsx
-import React, { useState, useEffect, useCallback, useMemo, useRef } from 'react';
+import  { useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { Link } from 'react-router-dom';
 import {
   Plus, FolderOpen, Layers, Clock, Pencil, X, Check, Trash2,
-  ChevronDown, DollarSign, Calendar, Flag, Archive, AlertCircle,
-  Play, PauseCircle, CheckCircle2, Search, SlidersHorizontal,
-  TrendingUp, ArrowUpRight, LayoutGrid, List, ArrowDownUp,
+  ChevronDown, Calendar, Archive, AlertCircle,
+  Play, PauseCircle, CheckCircle2, Search,
+  TrendingUp, LayoutGrid, List, ArrowDownUp,
   ChevronUp, Sparkles, Target, Activity, Wallet, BookOpen,
 } from 'lucide-react';
 import { AnimatePresence, motion, useSpring, useTransform } from 'motion/react';

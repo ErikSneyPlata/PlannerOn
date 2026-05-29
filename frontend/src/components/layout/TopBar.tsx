@@ -1,13 +1,13 @@
 // frontend/src/components/layout/TopBar.tsx
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { 
   Plus, Menu, Info, ChevronRight, X, ArrowUpRight, ArrowDownRight,
-  Bell, AlertTriangle, CheckCircle2, CalendarDays, ExternalLink, RefreshCw, Check
+  Bell, AlertTriangle, CheckCircle2, CalendarDays, RefreshCw, Check
 } from 'lucide-react';
 import { useAppStore, useAuthStore } from '../../store/useStore';
 import { cn } from '../../lib/utils';
 import { useLocation, useNavigate, NavLink } from 'react-router-dom';
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence } from 'motion/react';
 import { QuickAddModal } from '../../pages/Finance';
 import { api } from '../../lib/api';
 

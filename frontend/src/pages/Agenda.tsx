@@ -1,8 +1,7 @@
 // frontend/src/pages/Agenda.tsx
-import React, { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import {
-  Plus, Calendar as CalendarIcon, Clock, Video,
-  MoreVertical, Circle, CheckCircle2,
+  Plus, Calendar as CalendarIcon, Clock, Video, Circle, 
   Briefcase, BookOpen, Coffee, Users, Dumbbell, User,
   ChevronLeft, ChevronRight, Trash2, X,
 } from 'lucide-react';

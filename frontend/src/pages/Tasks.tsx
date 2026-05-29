@@ -1,11 +1,11 @@
 // frontend/src/pages/Tasks.tsx
-import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import  { useState, useEffect, useMemo, useCallback } from 'react';
 import {
-  Plus, CheckCircle2, Circle, Clock, MoreHorizontal,
+  Plus, CheckCircle2, Circle, Clock,
   FolderOpen, AlertTriangle, ArrowUp, Minus, ArrowDown,
   Inbox, ChevronDown, Calendar, Trash2, X, Check,
   Pencil, Tag, Timer, AlignLeft, AlertCircle, Hash,
-  Play, Pause, Square, History,
+  Play, History,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../lib/utils';

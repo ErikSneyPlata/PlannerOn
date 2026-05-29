@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import { 
-  User, 
   Bell, 
-  Lock, 
   Eye, 
   Palette, 
   Globe, 
   LogOut, 
   Shield,
   Smartphone,
-  Check,
   AlertCircle,
   Loader2,
   Trash2,

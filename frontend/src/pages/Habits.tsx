@@ -1,5 +1,5 @@
 // frontend/src/pages/Habits.tsx
-import React, { useState, useEffect, useCallback } from 'react';
+import  { useState, useEffect, useCallback } from 'react';
 import {
   Plus, Repeat, CalendarCheck, Pencil, Trash2,
   X, Check, AlertCircle, Flame, Zap, Moon,

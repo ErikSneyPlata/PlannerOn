@@ -1,8 +1,8 @@
 // frontend/src/pages/Documentation.tsx
-import React, { useState, useEffect, useMemo } from 'react';
+import  { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { 
-  BookOpen, Plus, Search, HelpCircle, Edit3, Eye, 
+  BookOpen, Plus, Search, Edit3, Eye, 
   Trash2, FileText, Code2, Server, Database, Sparkles, 
   ChevronRight, ArrowLeft, Copy, Check, Info, FileCode2, Download
 } from 'lucide-react';

@@ -1,10 +1,10 @@
 // frontend/src/components/layout/RightPanel.tsx
-import React, { useState, useEffect, useRef, useCallback } from 'react';
+import  { useState, useEffect, useRef, useCallback } from 'react';
 import {
-  Timer, CheckSquare, Heart, RotateCcw, X, Settings2,
+  Timer, RotateCcw, X, Settings2,
   Calendar, Play, Pause, CheckCircle2, Flame, Clock,
-  TrendingUp, Layers, ChevronRight, Zap, Target,
-  AlertCircle, StickyNote, FolderOpen,
+  Target,
+  AlertCircle
 } from 'lucide-react';
 import { useAppStore } from '../../store/useStore';
 import { cn } from '../../lib/utils';

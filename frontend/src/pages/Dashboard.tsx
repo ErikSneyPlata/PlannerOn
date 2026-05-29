@@ -1,14 +1,14 @@
 // frontend/src/pages/Dashboard.tsx
-import React, { useState, useEffect, useCallback } from 'react';
+import  { useState, useEffect, useCallback } from 'react';
 import {
   Zap, TrendingUp, CheckCircle2, Wallet, ArrowUpRight,
-  FolderOpen, Repeat, CalendarRange, BarChart3, StickyNote,
-  CheckSquare, ChevronRight, Clock, Target, Activity,
-  TrendingDown, Flame, Timer, Star, AlertTriangle,
-  ArrowRight, Plus, DollarSign, BookOpen, Calendar,
-  Layers, Play, PauseCircle, Archive, ChevronUp,
+  FolderOpen, Repeat, CalendarRange, StickyNote,
+  CheckSquare, ChevronRight, Target,
+  TrendingDown, Flame, Timer, AlertTriangle,
+  ArrowRight,
+  Layers, 
 } from 'lucide-react';
-import { motion, AnimatePresence, useSpring, useTransform } from 'motion/react';
+import { motion, useSpring, useTransform } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
 import { cn } from '../lib/utils';
 import { api } from '../lib/api';

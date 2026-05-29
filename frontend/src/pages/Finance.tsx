@@ -1,12 +1,12 @@
 // frontend/src/pages/Finance.tsx
-import React, { useState, useEffect, useMemo } from 'react';
+import  { useState, useEffect, useMemo } from 'react';
 import { createPortal } from 'react-dom';
 import {
   Plus, ArrowUpRight, ArrowDownRight, MoreHorizontal, Wallet,
   ShoppingCart, Coffee, Car, HeartPulse, BookOpen, Gamepad2,
   Home, Zap, Utensils, TrendingUp, Repeat2, DollarSign,
   Trash2, X, ChevronLeft, ChevronRight, Calendar, ChevronDown,
-  Search, Filter,
+  Search,
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '../lib/utils';

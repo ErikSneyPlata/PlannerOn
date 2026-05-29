@@ -1,5 +1,5 @@
 // frontend/src/pages/Notes.tsx
-import React, {
+import  {
   useState, useEffect, useCallback, useMemo, useRef,
 } from 'react';
 import { createPortal } from 'react-dom';
