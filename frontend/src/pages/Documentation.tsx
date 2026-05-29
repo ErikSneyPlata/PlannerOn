@@ -1,5 +1,5 @@
 // frontend/src/pages/Documentation.tsx
-import  { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { 
   BookOpen, Plus, Search, Edit3, Eye, 
@@ -373,11 +373,14 @@ export default function Documentation() {
   // Quick template insertion
   const handleApplyTemplate = (templateContent: string, templateTitle: string) => {
     if (editDoc) {
-      setEditDoc(prev => ({
-        ...prev,
-        title: prev.title || templateTitle,
-        content: templateContent,
-      }));
+      setEditDoc(prev => {
+        if (!prev) return prev;
+        return {
+          ...prev,
+          title: prev.title || templateTitle,
+          content: templateContent,
+        };
+      });
     }
   };
 
