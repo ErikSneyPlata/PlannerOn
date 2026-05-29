@@ -1,0 +1,27 @@
+// ─── Agregar esto al schema.prisma existente ───────────────────────────────
+
+// 1. Añadir al enum (si aún no existe una sección de notas)
+//    No necesita enum propio, las categorías son String libre.
+
+// 2. Añadir el modelo Note después de EventLog:
+
+model Note {
+  id        String   @id @default(cuid())
+  title     String
+  content   String   @default("")
+  category  String   @default("General")
+  color     String   @default("#4d8eff")
+  isPinned  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// 3. Añadir en el modelo User (dentro del bloque User existente):
+//    notes  Note[]
+
+// ─── Luego ejecutar: ────────────────────────────────────────────────────────
+//   npx prisma migrate dev --name add_notes
+//   npx prisma generate

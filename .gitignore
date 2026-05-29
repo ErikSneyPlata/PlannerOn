@@ -1,0 +1,132 @@
+# ─────────────────────────────────────────────
+# ROOT
+# ─────────────────────────────────────────────
+
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Env
+.env
+.env.*
+!.env.example
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Desktop.ini
+
+# Temporary files
+tmp/
+temp/
+.cache/
+
+# ─────────────────────────────────────────────
+# NODE MODULES
+# ─────────────────────────────────────────────
+
+node_modules/
+
+# PNPM
+.pnpm-store/
+
+# Yarn
+.yarn/
+.yarn/cache/
+.yarn/unplugged/
+.yarn/build-state.yml
+.yarn/install-state.gz
+
+# ─────────────────────────────────────────────
+# FRONTEND
+# ─────────────────────────────────────────────
+
+frontend/dist/
+frontend/build/
+frontend/.vite/
+frontend/coverage/
+
+# React / Vite
+frontend/*.local
+frontend/.env
+frontend/.env.*
+
+# TypeScript
+frontend/*.tsbuildinfo
+
+# ─────────────────────────────────────────────
+# BACKEND
+# ─────────────────────────────────────────────
+
+backend/dist/
+backend/build/
+backend/coverage/
+
+# Runtime files
+backend/uploads/
+backend/tmp/
+
+# Prisma generated
+backend/src/generated/
+
+# Local envs
+backend/.env
+backend/.env.*
+
+# SQLite databases
+backend/*.db
+backend/*.sqlite
+
+# ─────────────────────────────────────────────
+# PRISMA
+# ─────────────────────────────────────────────
+
+prisma/dev.db
+prisma/dev.db-journal
+
+# Prisma Studio
+.prisma/
+
+# ─────────────────────────────────────────────
+# TESTING
+# ─────────────────────────────────────────────
+
+coverage/
+.nyc_output/
+
+# Jest
+jest-cache/
+
+# Cypress
+cypress/videos/
+cypress/screenshots/
+
+# ─────────────────────────────────────────────
+# BUILD OUTPUTS
+# ─────────────────────────────────────────────
+
+dist/
+build/
+out/
+
+# ─────────────────────────────────────────────
+# MISC
+# ─────────────────────────────────────────────
+
+*.pem
+*.key
+*.crt
+
+# Local package managers
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
