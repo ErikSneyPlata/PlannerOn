@@ -63,15 +63,10 @@ app.get("/api/health", (req, res) => {
 
 
 
-// Serve static files in production
-if (process.env.NODE_ENV === "production") {
-  const distPath = path.join(process.cwd(), "dist");
-  if (fs.existsSync(distPath)) {
-    app.use(express.static(distPath));
-    app.get("*", (req, res) => {
-      res.sendFile(path.join(distPath, "index.html"));
-    });
-  }
-}
+app.use((req, res) => {
+  res.status(404).json({
+    error: 'Route not found',
+  });
+});
 
 export default app;
