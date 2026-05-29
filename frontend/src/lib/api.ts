@@ -75,6 +75,8 @@ export const api = {
   agenda: {
     list:   ()          => request('/api/agenda'),
     create: (data: any) => request('/api/agenda', { method: 'POST', body: JSON.stringify(data) }),
+    update: (id: string, data: any) => request(`/api/agenda/${id}`, { method: 'PATCH', body: JSON.stringify(data) }),
+    delete: (id: string) => request(`/api/agenda/${id}`, { method: 'DELETE' }),
   },
   notes: {
     list:   ()                      => request('/api/notes'),

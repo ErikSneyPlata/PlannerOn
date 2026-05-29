@@ -1,17 +1,12 @@
-// schema.prisma
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
-
-// ==========================================
-// ENUMS
-// ==========================================
 
 enum Priority {
   CRITICAL
@@ -55,10 +50,6 @@ enum EventCategory {
   PERSONAL
 }
 
-// ==========================================
-// CORE MODELS
-// ==========================================
-
 model User {
   id            String         @id @default(cuid())
   name          String
@@ -67,7 +58,6 @@ model User {
   avatar        String?
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
-
   projects      Project[]
   tasks         Task[]
   habits        Habit[]
@@ -97,7 +87,6 @@ model Project {
   dueDate        DateTime?
   createdAt      DateTime      @default(now())
   updatedAt      DateTime      @updatedAt
-
   userId         String
   user           User          @relation(fields: [userId], references: [id], onDelete: Cascade)
   tasks          Task[]
@@ -116,17 +105,12 @@ model Task {
   dueDate       DateTime?
   createdAt     DateTime       @default(now())
   updatedAt     DateTime       @updatedAt
-
   userId        String
   user          User           @relation(fields: [userId], references: [id], onDelete: Cascade)
   projectId     String?
   project       Project?       @relation(fields: [projectId], references: [id], onDelete: SetNull)
   focusSessions FocusSession[]
 }
-
-// ==========================================
-// COMPLEMENTARY MODULES
-// ==========================================
 
 model Habit {
   id          String   @id @default(cuid())
@@ -135,10 +119,8 @@ model Habit {
   frequency   String   @default("daily")
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-
   userId      String
   user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-
   logs        HabitLog[]
 }
 
@@ -149,7 +131,6 @@ model HabitLog {
   date      String   // ISO date string in YYYY-MM-DD format (e.g. "2026-05-27")
   completed Boolean  @default(true) // true = hecho, false = no hecho
   createdAt DateTime @default(now())
-
   @@unique([habitId, date])
 }
 
@@ -162,7 +143,6 @@ model Note {
   isPinned  Boolean  @default(false)
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
@@ -176,7 +156,6 @@ model Transaction {
   date        DateTime        @default(now())
   createdAt   DateTime        @default(now())
   updatedAt   DateTime        @updatedAt
-
   userId      String
   user        User            @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
@@ -188,9 +167,9 @@ model AgendaEvent {
   category    EventCategory @default(PERSONAL)
   startDate   DateTime
   endDate     DateTime
+  completed   Boolean       @default(false)
   createdAt   DateTime      @default(now())
   updatedAt   DateTime      @updatedAt
-
   userId      String
   user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
@@ -200,7 +179,6 @@ model FocusSession {
   duration  Int
   completed Boolean  @default(false)
   createdAt DateTime @default(now())
-
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   taskId    String?
@@ -209,18 +187,14 @@ model FocusSession {
 
 model UserSettings {
   id                String   @id @default(cuid())
-
   theme             String   @default("dark")
   language          String   @default("es")
   timezone          String   @default("America/Bogota")
-
   notifications     Boolean  @default(true)
   analytics         Boolean  @default(true)
   crossDeviceSync   Boolean  @default(false)
-
   createdAt         DateTime @default(now())
   updatedAt         DateTime @updatedAt
-
   userId            String   @unique
   user              User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
@@ -230,7 +204,6 @@ model EventLog {
   action    String
   details   String?
   createdAt DateTime @default(now())
-
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
@@ -242,7 +215,6 @@ model ProjectDocumentation {
   category    String   // 'DEVELOPMENT' | 'ARCHITECTURE' | 'DESIGN' | 'DATABASE' | 'OTHER'
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
-
   projectId   String
   project     Project  @relation(fields: [projectId], references: [id], onDelete: Cascade)
   userId      String

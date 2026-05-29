@@ -1,7 +1,7 @@
 // frontend/src/pages/Agenda.tsx
 import { useState, useEffect, useCallback } from 'react';
 import {
-  Plus, Calendar as CalendarIcon, Clock, Video, Circle, 
+  Plus, Calendar as CalendarIcon, Clock, Video, Circle, CheckCircle2,
   Briefcase, BookOpen, Coffee, Users, Dumbbell, User,
   ChevronLeft, ChevronRight, Trash2, X,
 } from 'lucide-react';
@@ -255,6 +255,17 @@ export default function Agenda() {
     }
   };
 
+  const handleToggleComplete = async (id: string, currentCompleted: boolean) => {
+    try {
+      setEvents(prev => prev.map(e => e.id === id ? { ...e, completed: !currentCompleted } : e));
+      await api.agenda.update(id, { completed: !currentCompleted });
+    } catch (err) {
+      console.error('Failed to toggle completion status', err);
+      // Revert upon failure
+      setEvents(prev => prev.map(e => e.id === id ? { ...e, completed: currentCompleted } : e));
+    }
+  };
+
   if (loading) {
     return (
       <div className="flex items-center justify-center h-64">
@@ -442,11 +453,14 @@ export default function Agenda() {
                   {/* Card */}
                   <div className={cn(
                     'flex-1 md:ml-7 bg-surface-container border rounded-2xl p-5 relative overflow-hidden',
-                    'transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/5',
-                    cfg.border.replace('/20', '/15')
+                    'transition-all duration-300',
+                    item.completed
+                      ? 'opacity-60 border-emerald-500/20 shadow-none'
+                      : 'hover:-translate-y-0.5 hover:shadow-lg hover:shadow-black/5',
+                    !item.completed && cfg.border.replace('/20', '/15')
                   )}>
                     {/* Left stripe */}
-                    <div className={cn('absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl', cfg.bg.replace('/10', '/50'))} />
+                    <div className={cn('absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl', item.completed ? 'bg-emerald-500/40' : cfg.bg.replace('/10', '/50'))} />
 
                     <div className="flex items-start justify-between gap-4 pl-3">
                       <div className="space-y-2 flex-1 min-w-0">
@@ -465,7 +479,10 @@ export default function Agenda() {
                         </div>
 
                         {/* Title */}
-                        <h4 className="font-display text-lg font-black text-on-surface tracking-tight leading-snug">
+                        <h4 className={cn(
+                          "font-display text-lg font-black tracking-tight leading-snug transition-all",
+                          item.completed ? "line-through text-on-surface-variant/50" : "text-on-surface"
+                        )}>
                           {item.title}
                         </h4>
 
@@ -490,12 +507,20 @@ export default function Agenda() {
                             : <Trash2 className="w-3.5 h-3.5" />
                           }
                         </button>
-                        <button className={cn(
-                          'w-9 h-9 rounded-full border flex items-center justify-center transition-all',
-                          'border-outline-variant/30 text-on-surface-variant/25',
-                          'hover:border-emerald-400 hover:text-emerald-400 hover:bg-emerald-400/8'
-                        )}>
-                          <Circle className="w-4 h-4" />
+                        <button
+                          onClick={() => handleToggleComplete(item.id, !!item.completed)}
+                          className={cn(
+                            'w-9 h-9 rounded-full border flex items-center justify-center transition-all',
+                            item.completed
+                              ? 'border-emerald-500/30 text-emerald-400 bg-emerald-400/10'
+                              : 'border-outline-variant/30 text-on-surface-variant/25 hover:border-emerald-400 hover:text-emerald-400 hover:bg-emerald-400/8'
+                          )}
+                        >
+                          {item.completed ? (
+                            <CheckCircle2 className="w-4 h-4" />
+                          ) : (
+                            <Circle className="w-4 h-4" />
+                          )}
                         </button>
                       </div>
                     </div>
