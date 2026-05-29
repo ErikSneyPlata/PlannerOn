@@ -36,7 +36,10 @@ app.use((req, res, next) => {
   next();
 });
 app.use(cors({
-  origin: true,
+  origin: [
+    'http://localhost:5173',
+    'https://planneron.vercel.app'
+  ],
   credentials: true
 }));
 app.use(express.json());

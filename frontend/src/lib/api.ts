@@ -2,7 +2,7 @@
 import { useAuthStore } from '../store/useStore';
 
 async function request(path: string, options: RequestInit = {}) {
-  const baseURL = "http://localhost:5000";
+  const baseURL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 
   const token = localStorage.getItem('auth-storage')
     ? JSON.parse(localStorage.getItem('auth-storage')!).state.token
